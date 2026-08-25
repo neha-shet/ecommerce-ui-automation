@@ -47,6 +47,7 @@ class CheckoutPage:
     def enter_first_name(self, first_name: str):
         """Enters first name into the checkout input field."""
         elem = self.wait.until(EC.visibility_of_element_located(self.first_name_input))
+        elem.click()
         elem.clear()
         if first_name:
             elem.send_keys(first_name)
@@ -54,6 +55,7 @@ class CheckoutPage:
     def enter_last_name(self, last_name: str):
         """Enters last name into the checkout input field."""
         elem = self.wait.until(EC.visibility_of_element_located(self.last_name_input))
+        elem.click()
         elem.clear()
         if last_name:
             elem.send_keys(last_name)
@@ -61,6 +63,7 @@ class CheckoutPage:
     def enter_postal_code(self, postal_code: str):
         """Enters postal code into the checkout input field."""
         elem = self.wait.until(EC.visibility_of_element_located(self.postal_code_input))
+        elem.click()
         elem.clear()
         if postal_code:
             elem.send_keys(postal_code)
@@ -88,7 +91,7 @@ class CheckoutPage:
             self.wait.until(EC.url_contains("checkout-step-two.html"))
             self.wait.until(EC.visibility_of_element_located(self.finish_button))
             return True
-        except Exception as e:
+        except Exception:
             return False
 
     def get_overview_item_names(self) -> List[str]:
